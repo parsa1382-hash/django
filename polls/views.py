@@ -1,9 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question
 
 def index(request):
-    return HttpResponse("hello world")
+    qlist = Question.objects.all()
+    output = ", ".join([q.qtext for q in qlist])
+    return HttpResponse(output)
 
+"""
+def index(request):
+    return HttpResponse("hello world")
+"""
 
 
 
